@@ -22,7 +22,7 @@ const Page = () => {
     if (isSuccess && data?.success) {
       router.push("/dashboard");
     }
-  }, [isSuccess, data, router, origin]);
+  }, [isSuccess, data, router]);
 
   // Handle error in useEffect
   useEffect(() => {
