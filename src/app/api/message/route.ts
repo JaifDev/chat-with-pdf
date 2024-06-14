@@ -72,7 +72,7 @@ export const POST = async (req: NextRequest) => {
     content: msg.text,
   }));
 
-  const response = mistral.chatStream({
+  const response: any = mistral.chatStream({
     model: "mistral-small-latest",
     maxTokens: 1000,
     messages: [
