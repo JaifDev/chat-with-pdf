@@ -1,15 +1,12 @@
 "use client";
 
 import { useEffect } from "react"; // Import useEffect
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { trpc } from "../_trpc/client";
 import { Loader2 } from "lucide-react";
 
 const Page = () => {
   const router = useRouter();
-
-  const searchParams = useSearchParams();
-  const origin = searchParams.get("origin");
 
   // Store the query result in a variable
   const { data, error, isSuccess, isError } = trpc.authCallBack.useQuery(
@@ -23,7 +20,7 @@ const Page = () => {
   // Handle success in useEffect
   useEffect(() => {
     if (isSuccess && data?.success) {
-      router.push(origin ? `/${origin}` : "/dashboard");
+      router.push("/dashboard");
     }
   }, [isSuccess, data, router, origin]);
 
